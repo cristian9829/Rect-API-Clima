@@ -17,9 +17,8 @@ export default class Formulario extends Component{
       ciudad: this.ciudadRef.current.value,
       pais: this.paisRef.current.value
     }
-
-    console.log(respuesta)
     //Enviar por props
+    this.props.datosConsulta(respuesta)
 
     //Resetiar el formulario
 
