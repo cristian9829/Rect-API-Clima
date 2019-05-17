@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './componentes/Header';
 import Formulario from './componentes/Formulario';
+import Error from './componentes/error';
 
 class App extends React.Component {
 
@@ -8,17 +9,25 @@ class App extends React.Component {
     error: false
   }
 
-  datosConsulta = (respuesta) =>{
+  datosConsulta = respuesta =>{
     if(respuesta.ciudad === '' || respuesta.pais === ''){
       this.setState({
         error: true
       })     
     }else{
-      
+      console.log('todo Correcto')
     }
   }
 
   render(){
+    const error =  this.state.error
+
+    let resultado;
+
+    if(error){
+      resultado = <Error mensaje="Ambos campos son obligatorios"/>
+    }
+
     return (
       <div className="App">
         <Header
@@ -27,6 +36,7 @@ class App extends React.Component {
         <Formulario
           datosConsulta = {this.datosConsulta}
         />
+        {resultado}
       </div>
     );
   }
