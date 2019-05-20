@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './componentes/Header';
 import Formulario from './componentes/Formulario';
+import Clima from './componentes/Clima';
 import Error from './componentes/error';
 
 class App extends React.Component {
@@ -22,7 +23,8 @@ class App extends React.Component {
       })     
     }else{
       this.setState({
-        consulta: respuesta
+        consulta: respuesta,
+        error: false
       })
     }
   }
@@ -45,9 +47,6 @@ class App extends React.Component {
           resultado: datos
         })
       })
-      .catch(error => {
-        console.log(error)
-      })
   }
 
   render(){
@@ -57,6 +56,10 @@ class App extends React.Component {
 
     if(error){
       resultado = <Error mensaje="Ambos campos son obligatorios"/>
+    }else{
+      resultado = <Clima
+        resultado = {this.state.resultado}
+      />
     }
 
     return (
@@ -67,7 +70,7 @@ class App extends React.Component {
         <Formulario
           datosConsulta = {this.datosConsulta}
         />
-        {resultado}
+        {resultado} 
       </div>
     );
   }
