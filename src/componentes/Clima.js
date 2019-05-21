@@ -20,8 +20,8 @@ export default class Clima extends Component{
               <p className="temperatura">
                 Actual: { (main.temp - kelvin).toFixed(2) } &deg;C
               </p>
-              <p>Max. {main.temp_max - kevin} &deg;C</p>
-              <p>Min. {main.temp_min - kevin} &deg;C</p>
+              <p>Max. {main.temp_max - kelvin} &deg;C</p>
+              <p>Min. {main.temp_min - kelvin} &deg;C</p>
             </span>
           </div>
         </div>

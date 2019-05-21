@@ -13,7 +13,7 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(prevState.consulta != this.state.consulta){
+    if(prevState.consulta !== this.state.consulta){
       this.consultarApi()
 
     }
@@ -53,12 +53,15 @@ class App extends React.Component {
   }
 
   render(){
-    const error =  this.state.error
+    const {error} =  this.state.error,
+          {cod} = this.state.resultado;
 
     let resultado;
 
     if(error){
       resultado = <Error mensaje="Ambos campos son obligatorios"/>
+    }else if (cod === '404'){
+      resultado = <Error mensaje="Ciudad no encontrada"/>
     }else{
       resultado = <Clima
         resultado = {this.state.resultado}
